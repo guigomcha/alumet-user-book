@@ -5,7 +5,7 @@
 
 - [Installing Alumet](installation/install.md)
 - [Configuration file](installation/config.md)
-- ["Execution" mode]()
+- ["Execution" mode](installation/exec.md)
 - [HPC "relay" mode]()
 
 # Plugins reference
