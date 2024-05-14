@@ -3,9 +3,9 @@
 
 # Installation and Configuration
 
-- [Start here]()
+- [Start here - Installing Alumet](installation/install.md)
+- [Configuration file](installation/config.md)
 - [HPC "relay collector" mode]()
-- [Configuration file]()
 
 # Plugins reference
 
@@ -21,7 +21,7 @@
     - [CSV file]()
     - [JSON file]()
     - [InfluxDB]()
-    - [Prometheus]()
+    - [ElasticSearch / OpenSearch]()
 
 # Community
 
