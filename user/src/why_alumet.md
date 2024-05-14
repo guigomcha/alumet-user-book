@@ -23,8 +23,8 @@ Our preliminary results seem to show that Alumet uses less CPU cycles, consumes 
 ## Adaptive
 
 We worked hard to provide two forms of adaptation:
-1. Adapting to your needs at compile-time: Thanks to Alumet's modularity, you are able to build a measurement software tailored to your needs.
-2. Adaptings to the context at run-time: Unlike other tools, Alumet allows the pipeline to be reconfigured on-the-fly. With our novel approach, you can switch from monitoring at 1 Hz to profiling at 1000 Hz without restarting anything.
+1. Adapting to your needs at compile-time: thanks to Alumet's modularity, you are able to build a measurement software tailored to your needs.
+2. Adapting to the context at run-time: unlike other tools, Alumet allows the pipeline to be reconfigured on-the-fly. With our novel approach, you can switch from monitoring at 1 Hz to profiling at 1000 Hz without restarting anything.
 
 ## Rigorous
 

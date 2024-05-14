@@ -1,4 +1,4 @@
-# Start here - Installing Alumet
+# Installing Alumet
 
 > ⚠️&nbsp;&nbsp;**Alumet is currently in Beta**.
 >
