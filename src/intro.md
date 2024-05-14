@@ -3,6 +3,8 @@
 Welcome to the ALUMET user guide!
 If you want to measure something with ALUMET, you have come to the right place.
 
+To skip the introduction and install ALUMET, [click here](installation/install.md).
+
 ## What is ALUMET?
 
 ALUMET is a modular and efficient software measurement tool. With ALUMET, you can:

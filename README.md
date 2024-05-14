@@ -1,17 +1,14 @@
-# The ALUMET Books
+# The ALUMET User Book
 
-This repository contains the "Alumet books":
+This repository contains the "Alumet user book", a guide for the users for the users of the measurement tool: system administrators, researchers or engineers who want to measure things, etc.
 
-- The [developer book](./developer/), for those who want to extend Alumet with new plugins.
-- The [user book](./user/), for the users of the measurement tool, including system administrators who want to deploy it.
+The books is made with [mdBook](https://rust-lang.github.io/mdBook/).
 
-The two books are made with [mdBook](https://rust-lang.github.io/mdBook/).
-
-## Generating the books
+## Generating the book
 
 First, you need to [install mdBook](https://rust-lang.github.io/mdBook/guide/installation.html#installation).
 
-To generate a book, `cd` in its directory, then run `mdbook`.
+Then, run `mdbook`.
 Example:
 
 ```sh
