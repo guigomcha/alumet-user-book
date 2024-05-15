@@ -21,23 +21,23 @@ git clone https://github.com/alumet-dev/alumet.git
 The Alumet repository contains multiple crates ("crates" are Rust libraries/packages).
 To run Alumet, we are interested in `app-agent`, which produces a runnable measurement tool by compiling the core of Alumet and a set of standard plugins into a single binary.
 
-Let's compile and run this agent.
+Let's compile this agent.
 ```sh
 cd alumet/app-agent
-cargo run -- --help
+cargo build
 ```
 
-Here, we use `cargo run` to compile and run the agent. The double dash (`--`) allows to pass arguments to the agent, here `--help`.
-
-You should get something like this:
+The binary should be located in `../target/debug/alumet-agent`. You can check this with a simple `ls`:
+```sh
+ls ../target/debug/alumet-agent
 ```
-$ cargo run -- --help
-   Compiling tokio v1.37.0
-   ...
-   Compiling app-agent v0.4.0 (/home/user/alumet/app-agent)
-    Finished dev [unoptimized + debuginfo] target(s) in 18.07s
-     Running `/home/user/alumet/target/debug/alumet-agent --help`
-[2024-05-14T17:58:00Z INFO  alumet_agent] Starting ALUMET agent v0.4.0
+
+If the agent is there, you can run it. Otherwise, look into the target directory to find the agent.
+
+For the first time, let's use `--help` to learn about the available arguments.
+```sh
+$ ../target/debug/alumet-agent
+[2024-05-14T17:58:00Z INFO  alumet_agent] Starting ALUMET agent v0.4.1
 Command line arguments
 
 Usage: alumet-agent [OPTIONS] [COMMAND]
@@ -58,12 +58,20 @@ Options:
           Print help (see a summary with '-h')
 ```
 
-To run the agent, you can use the `run` command.
+To observe your machine, the simplest way is to use the `run` command.
+
 ```sh
-cargo run -- run
+../target/debug/alumet-agent
 ```
 
 Alumet will then start to observe your machine.
+
+## Required privileges
+
+Measuring some metrics, like RAPL energy counters and perf_events, require specific privileges.
+Alumet will warn you about missing privileges and will suggest commands to fix the issue (there are several options).
+
+In any case, please **do not use `sudo cargo run`**, because that would compile the project with the root user, making it unusable for your user account.
 
 ## Output file and configuration
 
@@ -72,13 +80,33 @@ By default, this is `alumet-output.csv`. You can change this by editing `alumet-
 
 [Learn more about Alumet's config here](./config.md).
 
+## Enabling more plugins
+
+By default, only some plugins are enabled. To enable a plugin and include it in the Alumet agent binary, perform these two steps:
+1. Add a dependency on the plugin.
+2. Modify `main.rs` to enable the plugin.
+
+Here is how to do it with the NVIDIA plugin.
+1. In the directory of `app-agent`, run `cargo add plugin-nvidia`
+2. Open `src/main.rs`, locate the line that contains `static_plugins!` (line 31) and add `plugin_nvidia::NvidiaPlugin` to the list of plugins.
+It should look like the following:
+```rs
+// Specifies the plugins that we want to load.
+let plugins = static_plugins![RaplPlugin, CsvPlugin, SocketControlPlugin, PerfPlugin, plugin_nvidia::NvidiaPlugin];
+```
+
+Then, recompile the agent with `cargo build`.
+
+> Note: if you want to run Alumet on a NVIDIA Jetson device,
+> replace `cargo add plugin-nvidia` by `cargo add plugin-nvidia --features jetson --no-default-features`. 
+
 ## Tips
 
 ### Default command
 
 Since `run` is the default command, you can also run the agent without any argument.
 ```sh
-cargo run
+../target/debug/alumet-agent
 ```
 
 ### Path to the binary
@@ -92,5 +120,4 @@ The aforementioned paths are relative to the `app-agent` directory.
 ### Release mode
 
 By default, the measurement tool is built in _debug mode_, which enables better diagnostics but disables many optimizations.
-To deploy Alumet "in production", you would want to use the _release mode_ by adding `--release` to the cargo flags:
-`cargo run --release` (to run the agent now) or `cargo build --release` (to produce the binary and stop).
+To deploy Alumet "in production", you would want to use the _release mode_ by adding `--release` to the cargo flags. For instance, use `cargo build --release` to produce the optimized binary and stop.
