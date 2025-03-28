@@ -23,7 +23,7 @@
   - [CSV file]()
   - [JSON file]()
   - [InfluxDB]()
-  - [ElasticSearch / OpenSearch]()
+  - [OpenTelemetry / ElasticSearch / OpenSearch](plugins/output/opentelemetry.md)
 
 # Community
 
