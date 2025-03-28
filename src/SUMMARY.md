@@ -29,3 +29,4 @@
 
 - [Who is behind ALUMET?]()
 - [Contributing]()
+<!-- markdownlint-enable first-line-h1 no-empty-links -->
