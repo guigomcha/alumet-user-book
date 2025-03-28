@@ -67,12 +67,14 @@ the configuration options may change. You can replace the existing configuration
 version of the configuration by using the `config regen` command.
 
 Example:
+
 ```sh
 alumet-agent config regen
 # Note: replace alumet-agent by the path to the binary application, or by `cargo run --`
 ```
 
 Example (if you use cargo run):
+
 ```sh
 cargo run -- config regen
 ```

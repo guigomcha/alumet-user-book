@@ -13,6 +13,7 @@ alumet-agent exec sleep 1
 ```
 
 With the standard plugins (rapl, perf, csv), the resulting CSV file looks like the following (formatted to make it easier to read).
+
 ```csv
 metric                       ;timestamp                      ;value             ;resource_kind ;resource_id ;consumer_kind ;consumer_id ;__late_attributes
 perf_hardware_REF_CPU_CYCLES ;2024-05-14T21:28:49.416768909Z ; 0                ;local_machine ;            ;process       ;     728039 ;

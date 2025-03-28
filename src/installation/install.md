@@ -22,11 +22,13 @@ The Alumet repository contains multiple crates ("crates" are Rust libraries/pack
 To run Alumet, we are interested in `alumet-agent`: a crate that produces a runnable measurement tool by compiling the core of Alumet and a set of standard plugins into a single executable binary.
 
 Let's compile the agent:
+
 ```sh
 cargo build -p alumet-agent
 ```
 
 The binary should be located in `target/debug/alumet-agent`. You can check this with a simple `ls`:
+
 ```sh
 ls target/debug/alumet-agent
 ```
@@ -34,6 +36,7 @@ ls target/debug/alumet-agent
 If the agent is there, you can run it. Otherwise, look into the target directory to find the agent.
 
 For the first time, let's use `--help` to learn about the available arguments.
+
 ```sh
 ❯ ./target/debug/alumet-agent --help                                          
 Alumet standard agent: measure energy and performance metrics
@@ -79,7 +82,8 @@ The standard agent, which you have just compiled, contains multiple Alumet plugi
 Each plugin can measure things, compute additional values based on the measurements, and/or save the measurements to a storage.
 
 To see which plugins are included in the agent, run:
-```
+
+```sh
 ❯ ./target/debug/alumet-agent plugins list
 [...]
 Available plugins:
@@ -105,7 +109,8 @@ For your first time, let's enable a very simple set of plugins:
 - `csv`: a plugin that saves all the measurements to a CSV file
 
 Run Alumet with these plugins by using the `--plugins` flag:
-```
+
+```sh
 ❯ ./target/debug/alumet-agent --plugins rapl,csv
 [2025-02-20T13:25:26Z INFO  alumet_agent] Starting Alumet agent 'alumet-agent' v0.8.0-6c72253-dirty (2025-02-20T12:40:49.666737256Z, rustc 1.84.0, debug=true)
 [2025-02-20T13:25:26Z WARN  alumet_agent] DEBUG assertions are enabled, this build of Alumet is fine for debugging, but not for production.
@@ -156,7 +161,8 @@ Measuring some metrics, like RAPL energy counters and perf_events, require speci
 Alumet will warn you about missing privileges and will suggest commands to fix the issue (there are several options).
 
 For example, if you get an error like this:
-```
+
+```sh
 [2025-02-20T13:28:40Z WARN  plugin_rapl] I could not use perf_events to read RAPL energy counters: perf_event_open failed. Try to set kernel.perf_event_paranoid to 0 or -1, or to give CAP_PERFMON to the application's binary (CAP_SYS_ADMIN before Linux 5.8).
 
 [...]
@@ -170,6 +176,7 @@ Caused by:
 
 Read the logs and apply one of the proposed solutions.
 The easiest one is to run this command before starting Alumet:
+
 ```sh
 sudo sysctl -w kernel.perf_event_paranoid=0
 ```

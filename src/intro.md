@@ -8,6 +8,7 @@ To skip the introduction and install ALUMET, [click here](installation/install.m
 ## What is ALUMET?
 
 ALUMET is a modular and efficient software measurement tool. With ALUMET, you can:
+
 - measure the energy consumption of your CPU, GPU, and more
 - assign the energy consumption of hardware resources to their consumers (such as processes, K8S pods, containers, etc.)
 - gather performance metrics at a configurable frequency
@@ -29,6 +30,7 @@ We offer many "standard" plugins, but you are free to create your own, for insta
 ### Performance
 
 The _L_ in Alumet stands for _Lightweight_. Why is Alumet "lightweight" compared to other measurement tools?
+
 1. **Optimized pipeline**: Alumet is written in Rust, optimized for minimal latency and low memory consumption.
 2. **Efficient interfaces**: When we develop a new measurement source, we try to find the most efficient way of measuring what we're interested in. As a result, many plugins are based on low-level interfaces, such as the Linux [perf_events interface](https://man.archlinux.org/man/perf_event_open.2.fr), instead of slower higher-level wrappers. In particular, we try to remove useless intermediate levels, such as calling an external program and parsing its text output.
 3. **Pay only for what you need**: Alumet's modularity allows you to create a bespoke measurement tool by choosing the plugins that suit your needs, and removing the rest. You don't need a mathematical model that assigns the energy consumption of hardware components to processes? Remove it, and enjoy an even smaller disk footprint, CPU overhead, memory use and energy consumption.
@@ -38,10 +40,11 @@ Read more about the advantages of Alumet on the next page: [Why ALUMET and not \
 ## Does it work on \<my_machine>\?
 
 For now, Alumet works in the following environments:
+
 - Operating Systems: Linux, ~~macOS[^os], Windows[^os]~~
 - Hardware components[^component]:
-    - CPUs: Intel x86 processors (Sandy Bridge or more recent), AMD x86 processors (Zen 1 or more recent), NVIDIA Jetson CPUs (any model)
-    - GPUs: NVIDIA dedicated GPUs, NVIDIA Jetson GPUs (any model)
+  - CPUs: Intel x86 processors (Sandy Bridge or more recent), AMD x86 processors (Zen 1 or more recent), NVIDIA Jetson CPUs (any model)
+  - GPUs: NVIDIA dedicated GPUs, NVIDIA Jetson GPUs (any model)
 
 [^os]: While the core of Alumet is cross-platform, many plugins only work on Linux, for example the RAPL and perf plugins. There is no macOS-specific nor Windows-specific plugin for the moment, so Alumet will not be able to measure interesting metrics on these systems.
 
