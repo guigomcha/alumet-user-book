@@ -17,7 +17,6 @@ Then, run `mdbook`.
 Example:
 
 ```sh
-cd user
 mdbook serve --open
 ```
 
