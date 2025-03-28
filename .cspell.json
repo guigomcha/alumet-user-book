@@ -7,6 +7,14 @@
     "dictionaries": [
         "project-words"
     ],
+    "ignorePaths": [
+        "*.toml",
+        ".git/*",
+        ".gitignore",
+        ".github/",
+        "*.svg",
+        ".circleci/"
+    ],
     "dictionaryDefinitions": [
         {
             "name": "project-words",
