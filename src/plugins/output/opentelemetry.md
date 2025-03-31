@@ -1,10 +1,10 @@
-# OpenTelemetry
+# OpenTelemetry Output Plugin
 
 ## Description
 
-[OpenTelemetry](https://opentelemetry.io/docs/what-is-opentelemetry/) (otel) is an open source observability framework and toolset designed to ease the integration of observability backends such as Jaeger, Prometheus, Elasticsearch, OpenSearch and more. While it offers vendor/tool-agnostic and autoinstrumentation capabilities, the backend (storage) and the frontend (visualization) of telemetry data are intentionally left to other tools.
+[OpenTelemetry](https://opentelemetry.io/docs/what-is-opentelemetry/) (OTEL) is an open source observability framework and toolset designed to ease the integration of observability backends such as Jaeger, Prometheus, Elasticsearch, OpenSearch and more. While it offers vendor/tool-agnostic and autoinstrumentation capabilities, the backend (storage) and the frontend (visualization) of telemetry data are intentionally left to other tools.
 
-The plugin developed is an exporter (push) which can be connected to the otel framework via a receiver.
+The plugin developed is an exporter (push) which can be connected to the OTEL framework via a receiver.
 
 ## Configuration
 
@@ -28,7 +28,7 @@ The plugin has been tested on both, local environment using docker-compose.yaml 
 
 [OpenSearch](https://opensearch.org/docs/latest/getting-started/intro/) is a distributed search and analytics engine that can be used as vector database, full-text search and observability backend for logs, metrics and traces.
 
-The connection to OpenSearch was done following the [official Data Prepper tutorial](https://github.com/opensearch-project/data-prepper/tree/main/examples/metrics-ingestion-otel) which is a recommended ingestion pipeline tool which can be connected to otel as recomended [here](https://opensearch.org/blog/distributed-tracing-pipeline-with-opentelemetry/).
+The connection to OpenSearch was done following the [official Data Prepper tutorial](https://github.com/opensearch-project/data-prepper/tree/main/examples/metrics-ingestion-OTEL) which is a recommended ingestion pipeline tool which can be connected to OTEL as recomended [here](https://opensearch.org/blog/distributed-tracing-pipeline-with-opentelemetry/).
 
 Notes:
 - For clarity, I disconnected traces and metrics from other sources to better visualize in OpenSearch what comes from alumet.
@@ -62,18 +62,18 @@ exporters:
 
 Alumet was left with the default configuration and resulted in the correct population of the OpenSearch database and ability to explore the data via the dashboards as shown in the figure below.
 
-![demo](images/opentelemetry-opensearch-demo.png)
+![demo](../../images/opentelemetry-opensearch-demo.png)
 
 ### Thanos K8s example
 
-[Thanos](https://github.com/thanos-io/thanos) is a set of components that can be composed into a highly available metric system with unlimited storage capacity, which can be added seamlessly on top of existing Prometheus deployments. Thanos Receive has the Prometheus Remote Write API built in, on top of the functionality for long-term-storage and downsampling, and it can be used directly without an underlaying Prometheus since the otel Exporter can directly upload TSDB blocks to the object storage bucket of Thanos.
+[Thanos](https://github.com/thanos-io/thanos) is a set of components that can be composed into a highly available metric system with unlimited storage capacity for Time Series Data Base (TSDB), which can be added seamlessly on top of existing Prometheus deployments. The component "Thanos Receive" has the Prometheus Remote Write API built in, on top of the functionality for long-term-storage and downsampling. Since the OTEL Exporter natively implements the Prometheus Remote Write protocol, it can directly upload TSDB blocks to the object storage bucket of Thanos even without an underlaying Prometheus.
 
-Alumet was configured as following and deployed in the host of a single-node K8s cluster which had an otel collector [using the operator](https://open-telemetry.github.io/opentelemetry-helm-charts) and Thanos.
+Alumet was configured as following and deployed in the host of a single-node K8s cluster which had an OTEL collector [using the operator](https://open-telemetry.github.io/opentelemetry-helm-charts) and Thanos.
 
 ```toml
 # Alumet config
 [plugins.opentelemetry]
-collector_host = "http://my-otel-collector-ingress"
+collector_host = "http://my-otel-collector-exposed-service"
 prefix = ""
 suffix = "_alumet"
 append_unit_to_metric_name = true
@@ -89,7 +89,7 @@ opentelemetry-operator:
   enabled: true
   manager:
     collectorImage:
-      repository: otel/opentelemetry-collector-contrib
+      repository: OTEL/opentelemetry-collector-contrib
   # Sub-field for admission webhooks configuration
   admissionWebhooks:
     # Use Helm to automatically generate self-signed certificate.
@@ -115,7 +115,7 @@ collectors:
           timeout: 1s
       exporters:
         prometheusremotewrite:
-          endpoint: "http://monitoring-hub-thanos-receive.monitoring.svc.cluster.local:19291/api/v1/receive"
+          endpoint: "http://my-thanos-receive-service.monitoring.svc.cluster.local:19291/api/v1/receive"
 
       service:
         pipelines:
@@ -130,4 +130,4 @@ collectors:
 
 ### Others
 
-- ElasticSearch natively supports the OpenTelemetry protocol and can be integrated to an otel collector via the APM, refer to the [official documentation](https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html) for an example.
+- ElasticSearch natively supports the OpenTelemetry protocol and can be integrated to an OTEL collector via the APM, refer to the [official documentation](https://www.elastic.co/guide/en/observability/current/apm-open-telemetry.html) for an example.
