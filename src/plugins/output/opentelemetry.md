@@ -89,7 +89,7 @@ opentelemetry-operator:
   enabled: true
   manager:
     collectorImage:
-      repository: OTEL/opentelemetry-collector-contrib
+      repository: otel/opentelemetry-collector-contrib
   # Sub-field for admission webhooks configuration
   admissionWebhooks:
     # Use Helm to automatically generate self-signed certificate.
