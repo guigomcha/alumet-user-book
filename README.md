@@ -2,7 +2,6 @@
 
 This repository contains the "Alumet user book", a guide for the users for the users of the measurement tool: system administrators, researchers or engineers who want to measure things, etc.
 
-
 ## Reading the book
 
 The book is available online (via GitHub pages) here: https://alumet-dev.github.io/user-book/
@@ -17,7 +16,6 @@ Then, run `mdbook`.
 Example:
 
 ```sh
-cd user
 mdbook serve --open
 ```
 

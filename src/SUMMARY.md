@@ -1,3 +1,4 @@
+<!-- markdownlint-disable first-line-h1 no-empty-links -->
 [Introduction](intro.md)
 [Why ALUMET and not \<X\>?](why_alumet.md)
 
@@ -12,17 +13,17 @@
 
 - [How plugins work]()
 - [Measurement Sources]()
-    - [RAPL energy consumption]()
-    - [NVIDIA GPUs (and Jetson devices)]()
-    - [perf_events]()
-    - [Kubernetes pods]()
-    - [HPC jobs on OAR]()
+  - [RAPL energy consumption]()
+  - [NVIDIA GPUs (and Jetson devices)]()
+  - [perf_events]()
+  - [Kubernetes pods]()
+  - [HPC jobs on OAR]()
 - [Data Transforms]()
 - [Measurement Outputs]()
-    - [CSV file]()
-    - [JSON file]()
-    - [InfluxDB]()
-    - [ElasticSearch / OpenSearch]()
+  - [CSV file]()
+  - [JSON file]()
+  - [InfluxDB]()
+  - [ElasticSearch / OpenSearch]()
 
 # Community
 

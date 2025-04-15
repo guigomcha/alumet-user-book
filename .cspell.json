@@ -1,17 +1,24 @@
 {
     "version": "0.2",
+    "useGitignore": true,
+    "caseSensitive": false,
+    "enableGlobDot": true,
     "language": "en",
     "dictionaries": [
-        "custom-dict"
+        "project-words"
+    ],
+    "ignorePaths": [
+        "*.toml",
+        ".git/*",
+        ".gitignore",
+        ".github/",
+        "*.svg",
+        ".circleci/"
     ],
     "dictionaryDefinitions": [
         {
-            // The name of the dictionary is used to look it up.
-            "name": "custom-dict",
-            // Path to the custom word file. Relative to the root.
-            "path": "../.cspell/custom-dict.txt",
-            // Some editor extensions will use `addWords` for adding words to your
-            // personal dictionary.
+            "name": "project-words",
+            "path": ".cspell/project-words.txt",
             "addWords": true
         }
     ],
@@ -32,7 +39,7 @@
         {
             "name": "markdown_inline_code",
             "pattern": "`.+`"
-        },
+        }
     ],
     "enabled": true
 }
