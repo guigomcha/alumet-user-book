@@ -27,7 +27,7 @@ The plugin has been tested on both, local environment and a K8s.
 
 ### Simple local example
 
-The plugin can be tested in a local environemnt with the Alumet's default configuration for it and results in the ability of downloading the metrics from http://localhost:9091/metrics.
+The plugin can be tested in a local environment with the Alumet's default configuration for it and results in the ability of downloading the metrics from http://localhost:9091/metrics.
 
 Note that the list of metrics available will vary based on the input plugins used.
 
@@ -210,6 +210,6 @@ spec:
         - my_host_ip:9091
 ```
 
-For the demo, the "stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M" command was used to ensure that data was pulled correctly. This resulted in Grafana and Prometheus to correctly capture the behaviour of the system as shown in the figure below.
+For the demo, the "stress --cpu 8 --io 4 --vm 2 --vm-bytes 128M" command was used to ensure that data was pulled correctly. This resulted in Grafana and Prometheus to correctly capture the behavior of the system as shown in the figure below.
 
 ![demo](../../images/prometheus-plugin-k8s-demo.png)
