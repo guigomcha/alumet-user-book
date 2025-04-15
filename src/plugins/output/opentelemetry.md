@@ -2,7 +2,7 @@
 
 ## Description
 
-[OpenTelemetry](https://opentelemetry.io/docs/what-is-opentelemetry/) (OTEL) is an open source observability framework and toolset designed to ease the integration of observability backends such as Jaeger, Prometheus, Elasticsearch, OpenSearch and more. While it offers vendor/tool-agnostic and autoinstrumentation capabilities, the backend (storage) and the frontend (visualization) of telemetry data are intentionally left to other tools.
+[OpenTelemetry](https://opentelemetry.io/docs/what-is-opentelemetry/) (OTEL) is an open source observability framework and toolset designed to ease the integration of observability backends such as Jaeger, Prometheus, Elasticsearch, OpenSearch and more. While it offers vendor/tool-agnostic and auto-instrumentation capabilities, the backend (storage) and the frontend (visualization) of telemetry data are intentionally left to other tools.
 
 The plugin developed is an exporter (push) which can be connected to the OTEL framework via a receiver.
 
@@ -28,7 +28,7 @@ The plugin has been tested on both, local environment using docker-compose.yaml 
 
 [OpenSearch](https://opensearch.org/docs/latest/getting-started/intro/) is a distributed search and analytics engine that can be used as vector database, full-text search and observability backend for logs, metrics and traces.
 
-The connection to OpenSearch was done following the [official Data Prepper tutorial](https://github.com/opensearch-project/data-prepper/tree/main/examples/metrics-ingestion-OTEL) which is a recommended ingestion pipeline tool which can be connected to OTEL as recomended [here](https://opensearch.org/blog/distributed-tracing-pipeline-with-opentelemetry/).
+The connection to OpenSearch was done following the [official Data Prepper tutorial](https://github.com/opensearch-project/data-prepper/tree/main/examples/metrics-ingestion-OTEL) which is a recommended ingestion pipeline tool which can be connected to OTEL as recommended [here](https://opensearch.org/blog/distributed-tracing-pipeline-with-opentelemetry/).
 
 Notes:
 - For clarity, I disconnected traces and metrics from other sources to better visualize in OpenSearch what comes from alumet.
